@@ -1,12 +1,14 @@
 package restassured;
 
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import utils.API;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.equalTo;
+import io.restassured.path.json.JsonPath;
 
 public class CreateUserAccountTest {
 
@@ -46,13 +48,14 @@ public class CreateUserAccountTest {
        String responseBody = response.body().asString();
         String jsonBody = responseBody.replaceAll("<html>\\s*<body>|</body>\\s*</html>", "");
 
-        io.restassured.path.json.JsonPath jsonPath = new io.restassured.path.json.JsonPath(jsonBody);
+        JsonPath jsonPath = new JsonPath(jsonBody);
+
 
         int statusCode = jsonPath.getInt("responseCode");
         String message = jsonPath.getString("message");
 
-        org.junit.Assert.assertEquals(201, statusCode);
-        org.junit.Assert.assertEquals("User created!", message);
+        MatcherAssert.assertThat(statusCode, Matchers.is(201));
+        MatcherAssert.assertThat(message, Matchers.is("User created!"));
     }
 
     @Test
@@ -90,13 +93,13 @@ public class CreateUserAccountTest {
         String responseBody = response.body().asString();
         String jsonBody = responseBody.replaceAll("<html>\\s*<body>|</body>\\s*</html>", "");
 
-        io.restassured.path.json.JsonPath jsonPath = new io.restassured.path.json.JsonPath(jsonBody);
+        JsonPath jsonPath = new JsonPath(jsonBody);
 
         int statusCode = jsonPath.getInt("responseCode");
         String message = jsonPath.getString("message");
 
-        org.junit.Assert.assertEquals(400, statusCode);
-        org.junit.Assert.assertEquals("Bad request, email parameter is missing in POST request.", message);
+        MatcherAssert.assertThat(statusCode, Matchers.is(400));
+        MatcherAssert.assertThat(message, Matchers.is("Bad request, email parameter is missing in POST request."));
     }
 
     @Test
@@ -135,12 +138,12 @@ public class CreateUserAccountTest {
         String responseBody = response.body().asString();
         String jsonBody = responseBody.replaceAll("<html>\\s*<body>|</body>\\s*</html>", "");
 
-        io.restassured.path.json.JsonPath jsonPath = new io.restassured.path.json.JsonPath(jsonBody);
+        JsonPath jsonPath = new JsonPath(jsonBody);
 
         int statusCode = jsonPath.getInt("responseCode");
         String message = jsonPath.getString("message");
 
-        org.junit.Assert.assertEquals(400, statusCode);
-        org.junit.Assert.assertEquals("Email already exists!", message);
+        MatcherAssert.assertThat(statusCode, Matchers.is(400));
+        MatcherAssert.assertThat(message, Matchers.is("Email already exists!"));
     }
 }
