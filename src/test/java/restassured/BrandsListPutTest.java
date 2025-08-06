@@ -6,7 +6,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static utils.APIUtils.sendPutRequestToBrandsList;
+import static utils.API.sendPutRequestToBrandsList;
 
 public class BrandsListPutTest {
 
