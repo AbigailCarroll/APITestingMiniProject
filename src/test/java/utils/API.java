@@ -19,6 +19,11 @@ public class API {
                 .build();
     }
 
+    public static RequestSpecification getVerifyLogin(){
+        return getBaseSpecBuilder(Config.getVerifyLoginUri())
+                .build();
+    }
+
     public static RequestSpecBuilder getBaseSpecBuilder(String path)
     {
         return new RequestSpecBuilder()
