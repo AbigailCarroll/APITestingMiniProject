@@ -11,10 +11,8 @@ public class CreateUserAccountTest {
 
     @Test
     public void testCreateUserAccountSuccess() {
-        // Use a unique email to avoid conflicts
         String uniqueEmail = "testuser_" + System.currentTimeMillis() + "@example.com";
 
-        // Send the parameters as form-urlencoded data
         Response response = given()
                 .spec(API.createAccountRequestSpec())
                 .formParams(
