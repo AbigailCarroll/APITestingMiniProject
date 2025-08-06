@@ -33,5 +33,10 @@ import java.util.Properties;
         {
             return properties.getProperty("automationexcercise.api_path.get_all_products");
         }
+
+        public static String postAllProductsUri()
+        {
+            return properties.getProperty("automationexercise.api_path.post_all_products");
+        }
     }
 
