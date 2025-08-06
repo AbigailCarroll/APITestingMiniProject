@@ -12,8 +12,8 @@ public class GetProductList {
     @BeforeAll
     public static void beforeAll()
     {
-        response = RestAssured
-                .given()
-                .spec()
+//        response = RestAssured
+//                .given()
+//                .spec()
     }
 }
