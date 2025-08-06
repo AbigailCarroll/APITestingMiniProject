@@ -1,17 +1,17 @@
-package pojos;
+package pojos.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SearchProductBadRequest{
+public class UserDetail{
 
-	@JsonProperty("message")
-	private String message;
+	@JsonProperty("user")
+	private User user;
 
 	@JsonProperty("responseCode")
 	private int responseCode;
 
-	public String getMessage(){
-		return message;
+	public User getUser(){
+		return user;
 	}
 
 	public int getResponseCode(){

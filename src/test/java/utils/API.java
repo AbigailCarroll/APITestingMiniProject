@@ -26,4 +26,11 @@ public class API {
                 .setBasePath(path);
     }
 
+    public static RequestSpecification getUserDetailByEmailSpec(String email) {
+        return getBaseSpecBuilder(Config.getUserDetailByEmailUri())
+                .addQueryParam("email", email)
+                .build();
+    }
+
+
 }

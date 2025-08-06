@@ -38,5 +38,19 @@ import java.util.Properties;
         {
             return properties.getProperty("automationexercise.api_path.post_all_products");
         }
+
+
+        public static String getUserDetailByEmailUri() {
+            return properties.getProperty("automationexercise.api_path.get_user_detail_by_email");
+        }
+
+        public static String getEmail() {
+            return properties.getProperty("default.email");
+        }
+
+
+
+
+
     }
 
