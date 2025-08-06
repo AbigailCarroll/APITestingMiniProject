@@ -11,6 +11,9 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pojos.ProductList.SearchProduct;
+import pojos.ProductList.ProductsItem;
+import pojos.ProductList.SearchProduct;
+import java.util.List;
 
 public class ProductSearchPostTest {
     private static Response response;
@@ -55,4 +58,25 @@ public class ProductSearchPostTest {
     }
 
     //TODO: Ensure all category items have a search term t-shirt
+    /**
+     * Method1:
+     *
+     * -Get list of product items
+     * -for each product item
+     *      -get category object
+     *      -get category "category" name
+     *      -if category name does not contains t-shirt
+     *          - false
+     * -return true
+     */
+
+    @Test
+    @DisplayName("Ensure category contains shirt key word")
+    public void testResponse_ReturnsProductItemsWithShirtInKeyword() {
+        List<ProductsItem> products = searchProduct.getProducts();
+
+        for(ProductsItem product: products) {
+            MatcherAssert.assertThat(product.getCategory().getCategory().toLowerCase().contains("shirt"), Matchers.is(true));
+        }
+    }
 }
