@@ -14,6 +14,11 @@ public class API {
                 .build();
     }
 
+    public static RequestSpecification getBrandList(){
+        return getBaseSpecBuilder(Config.getBrandsListUri())
+                .build();
+    }
+
     public static RequestSpecBuilder getBaseSpecBuilder(String path)
     {
         return new RequestSpecBuilder()
