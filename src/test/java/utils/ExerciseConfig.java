@@ -20,9 +20,15 @@ public class ExerciseConfig {
             e.printStackTrace();
         }
     }
+
     public static String getBaseUri() {
-        return properties.getProperty("github.base_uri");
+        return properties.getProperty("automationexercise.base_uri");
     }
+
+    public static String getCreateAccountPath() {
+        return properties.getProperty("automationexercise.api_path.create_account");
+    }
+
     public static String getProperty(String key) {
         return properties.getProperty(key);
     }
