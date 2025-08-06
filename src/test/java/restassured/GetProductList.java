@@ -12,8 +12,20 @@ public class GetProductList {
     @BeforeAll
     public static void beforeAll()
     {
-//        response = RestAssured
-//                .given()
-//                .spec()
+        response = RestAssured
+                .given()
+                .spec(API.getProductListSpec())
+                .when()
+                .get()
+                .then()
+                .log().all()
+                .extract().response();
+    }
+
+    @Test
+    @DisplayName("Status Code is 200")
+    public void testStatusCode()
+    {
+        MatcherAssert.assertThat(response.statusCode(), Matchers.is(200));
     }
 }
