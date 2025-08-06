@@ -100,7 +100,7 @@ public class CreateUserAccountTest {
     }
 
     @Test
-    @DisplayName("When the email is missing an error message should be returned")
+    @DisplayName("When the user exists an error message should be returned")
     public void testExistingUser() {
         String email = "testuser@example.com";
 
