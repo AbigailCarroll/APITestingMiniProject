@@ -29,6 +29,10 @@ public class ExerciseConfig {
         return properties.getProperty("automationexercise.api_path.create_account");
     }
 
+    public static String getVerifyLoginPath() {
+        return properties.getProperty("automationexercise.api_path.verify_login");
+    }
+
     public static String getProperty(String key) {
         return properties.getProperty(key);
     }

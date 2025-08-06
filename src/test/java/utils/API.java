@@ -35,4 +35,12 @@ public class API {
                 .setBasePath(path);
     }
 
+    public static RequestSpecification verifyLoginRequestSpec() {
+        return new RequestSpecBuilder()
+                .setBaseUri(BASE_URI)
+                .setBasePath(ExerciseConfig.getVerifyLoginPath())
+                .setContentType(ContentType.URLENC)
+                .build();
+    }
+
 }
