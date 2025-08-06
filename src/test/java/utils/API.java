@@ -7,7 +7,6 @@ import org.junit.runner.Request;
 public class API {
 
 
-
     public static RequestSpecification getProductListSpec()
     {
         return getBaseSpecBuilder(Config.getAllProductsUri())

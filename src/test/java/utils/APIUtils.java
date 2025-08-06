@@ -6,8 +6,8 @@ import io.restassured.response.Response;
 public class APIUtils {
 
     public static Response sendPutRequestToBrandsList() {
-        String baseUri = ConfigReader.getProperty("automationexcercise.base_uri");
-        String apiPath = ConfigReader.getProperty("automationexcercise.api_path.get_all");
+        String baseUri = Config.getBaseUri();
+        String apiPath = Config.getAllUri();
 
         return RestAssured
                 .given()
