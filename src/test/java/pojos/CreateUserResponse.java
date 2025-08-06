@@ -2,7 +2,7 @@ package pojos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class CreateUserRequest {
+public class CreateUserResponse {
 
 	@JsonProperty("name")
 	private String name;
