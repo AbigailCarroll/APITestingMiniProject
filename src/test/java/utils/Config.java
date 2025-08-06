@@ -26,7 +26,12 @@ import java.util.Properties;
         }
 
         public static String getBrandsListUri() {
-            return properties.getProperty("automationexcercise.api_path.get_all");
+            return properties.getProperty("automationexcercise.api_path.get_all_brands");
+        }
+
+        public static String getAllProductsUri()
+        {
+            return properties.getProperty("automationexcercise.api_path.get_all_products");
         }
     }
 
