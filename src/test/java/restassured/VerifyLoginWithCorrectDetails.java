@@ -1,6 +1,4 @@
 package restassured;
-
-
 import io.restassured.RestAssured;
 import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
@@ -11,9 +9,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pojos.VerifyLogin.VerifyLogin;
 
-public class VerifyLoginWithoutEmail {
+public class VerifyLoginWithCorrectDetails {
     private static Response response;
-    private static VerifyLogin verifyLoginInvalid;
+    private static VerifyLogin verifyLoginValid;
 
     @BeforeAll
     public static void setup(){
@@ -22,20 +20,21 @@ public class VerifyLoginWithoutEmail {
         response = RestAssured
                 .given()
                 .spec(utils.API.getVerifyLogin())
+                .formParam("email", "example@sparta2.com")
                 .formParam("password", "Test123")
                 .when()
                 .post()
                 .then()
                 .log().all()
                 .extract().response();
-       verifyLoginInvalid = response.as(VerifyLogin.class);
+        verifyLoginValid = response.as(VerifyLogin.class);
 
     }
 
     @Test
-    @DisplayName("Tests the response status code returns 400")
-    public void testResponseStatusCode_Returns400() {
-        MatcherAssert.assertThat(verifyLoginInvalid.getResponseCode(), Matchers.is(400));
+    @DisplayName("Tests the response status code returns 200")
+    public void testResponseStatusCode_Returns200() {
+        MatcherAssert.assertThat(verifyLoginValid.getResponseCode(), Matchers.is(200));
     }
 
 }

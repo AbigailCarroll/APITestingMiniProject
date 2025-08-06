@@ -2,7 +2,7 @@ package pojos.VerifyLogin;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class VerifyLoginInvalid{
+public class VerifyLogin {
 
 	@JsonProperty("message")
 	private String message;
