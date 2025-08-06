@@ -21,7 +21,7 @@ public class REST {
                 .when()
                 .post()
                 .then()
-                .log().all()
+//                .log().all()
                 .extract().response();
 
     }
