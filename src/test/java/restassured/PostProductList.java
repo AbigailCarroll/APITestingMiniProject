@@ -28,8 +28,8 @@ public class PostProductList {
                 .when()
                     .post()
                 .then()
-                .log().all()
-                .extract().response();
+                    .log().all()
+                    .extract().response();
 
         postProductListPOJO = response.as(PostProductListPOJO.class);
 
