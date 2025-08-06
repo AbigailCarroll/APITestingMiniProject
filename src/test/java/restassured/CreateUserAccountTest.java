@@ -39,24 +39,18 @@ public class CreateUserAccountTest {
                 .when()
                 .post();
 
-        // Log the response and perform explicit assertions
         response.then().log().all();
 
-        // Assert the HTTP status code directly on the response object
         response.then().statusCode(200);
 
-        // Assert the JSON fields from the cleaned-up body string directly
-        String responseBody = response.body().asString();
+       String responseBody = response.body().asString();
         String jsonBody = responseBody.replaceAll("<html>\\s*<body>|</body>\\s*</html>", "");
 
-        // Use RestAssured's JsonPath to parse the string and assert values
         io.restassured.path.json.JsonPath jsonPath = new io.restassured.path.json.JsonPath(jsonBody);
 
-        // Assert the custom response code and message
         int responseCode = jsonPath.getInt("responseCode");
         String message = jsonPath.getString("message");
 
-        // The assertion should use JUnit's assertion methods for clarity
         org.junit.Assert.assertEquals("responseCode should be 201", 201, responseCode);
         org.junit.Assert.assertEquals("message should be 'User created!'", "User created!", message);
     }
