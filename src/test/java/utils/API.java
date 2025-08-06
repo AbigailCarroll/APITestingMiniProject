@@ -1,17 +1,19 @@
 package utils;
 
+import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 
 public class API {
-    public static final String BASE_URI = ExerciseConfig.getBaseUri();
+    public static final String BASE_URI = Config.getBaseUri();
 
     public static RequestSpecification createAccountRequestSpec() {
         return new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
-                .setBasePath(ExerciseConfig.getCreateAccountPath())
+                .setBasePath(Config.getCreateAccountPath())
                 .setContentType(ContentType.URLENC) // Set the Content-Type for the request
                 .build();
     }
@@ -38,9 +40,26 @@ public class API {
     public static RequestSpecification verifyLoginRequestSpec() {
         return new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
-                .setBasePath(ExerciseConfig.getVerifyLoginPath())
+                .setBasePath(Config.getVerifyLoginPath())
                 .setContentType(ContentType.URLENC)
                 .build();
+    }
+
+    public static Response sendPutRequestToBrandsList() {
+        String baseUri = Config.getBaseUri();
+        String apiPath = Config.getAllUri();
+
+        return RestAssured
+                .given()
+                .baseUri(baseUri)
+                .header("Content-Type", "application/json")
+                .header("Accept", "application/json")
+                .body("{ \"dummy\": \"data\" }") // Add body to trigger error on PUT
+                .when()
+                .put(apiPath)
+                .then()
+                .log().all()
+                .extract().response();
     }
 
 }

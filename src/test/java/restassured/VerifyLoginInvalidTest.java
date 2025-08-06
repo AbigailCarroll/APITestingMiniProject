@@ -5,8 +5,7 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 import pojos.UserLoginResponse;
 import utils.API;
-import utils.ExerciseConfig;
-
+import utils.Config;
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -14,8 +13,8 @@ public class VerifyLoginInvalidTest {
 
     @Test
     public void verifyLoginWithInvalidCredentials() throws Exception {
-        String invalidEmail = ExerciseConfig.getProperty("automationexercise.invalid_email");
-        String invalidPassword = ExerciseConfig.getProperty("automationexercise.invalid_password");
+        String invalidEmail = Config.getProperty("automationexercise.invalid_email");
+        String invalidPassword = Config.getProperty("automationexercise.invalid_password");
 
         Response response = given()
                 .spec(API.verifyLoginRequestSpec())
