@@ -10,6 +10,7 @@ import static utils.APIUtils.sendPutRequestToBrandsList;
 
 public class BrandsListPutTest {
 
+
     @Test
     public void testPutMethodOnBrandsList_ShouldReturn405InBody() throws Exception {
         Response response = sendPutRequestToBrandsList();

@@ -8,6 +8,7 @@ import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import utils.API;
 import pojos.ProductList.ProductList;
 import pojos.ProductList.ProductsItem;
 import utils.API;
@@ -30,7 +31,6 @@ public class GetProductList {
                 .then()
                 .log().all()
                 .extract().response();
-
     }
 
     @Test
