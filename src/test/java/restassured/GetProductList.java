@@ -12,7 +12,6 @@ import pojos.ProductList.ProductList;
 import pojos.ProductList.ProductsItem;
 import utils.API;
 
-
 public class GetProductList {
 
     private static Response response;
