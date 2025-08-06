@@ -2,7 +2,6 @@ package restassured;
 
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
-import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
