@@ -3,7 +3,8 @@ package pojos.ProductList;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class SearchProduct{
+public class
+SearchProduct{
 
 	@JsonProperty("responseCode")
 	private int responseCode;
