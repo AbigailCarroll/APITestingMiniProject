@@ -1,4 +1,4 @@
-package pojos;
+package pojos.UserManagement;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
