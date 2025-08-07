@@ -37,4 +37,10 @@ public class VerifyLoginWithCorrectDetails {
         MatcherAssert.assertThat(verifyLoginValid.getResponseCode(), Matchers.is(200));
     }
 
+    @Test
+    @DisplayName("Tests the response message is correct")
+    public void testResponseMessageIsCorrect() {
+        MatcherAssert.assertThat(verifyLoginValid.getMessage(), Matchers.is("User exists!"));
+    }
+
 }

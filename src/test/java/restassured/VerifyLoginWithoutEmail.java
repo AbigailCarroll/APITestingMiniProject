@@ -38,4 +38,10 @@ public class VerifyLoginWithoutEmail {
         MatcherAssert.assertThat(verifyLoginInvalid.getResponseCode(), Matchers.is(400));
     }
 
+    @Test
+    @DisplayName("Tests the response message is correct")
+    public void testResponseMessageIsCorrect() {
+        MatcherAssert.assertThat(verifyLoginInvalid.getMessage(), Matchers.is("Bad request, email or password parameter is missing in POST request."));
+    }
+
 }
