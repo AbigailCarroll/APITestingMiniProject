@@ -30,6 +30,10 @@ import java.util.Properties;
             return properties.getProperty("automationexercise.api_path.get_all_brands");
         }
 
+        public static String getVerifyLoginUri() {
+            return properties.getProperty("automationexcercise.api_path.verify_login2");
+        }
+
         public static String getAllProductsUri()
         {
             return properties.getProperty("automationexercise.api_path.get_all_products");

@@ -24,6 +24,16 @@ public class API {
                 .build();
     }
 
+    public static RequestSpecification getBrandList(){
+        return getBaseSpecBuilder(Config.getBrandsListUri())
+                .build();
+    }
+
+    public static RequestSpecification getVerifyLogin(){
+        return getBaseSpecBuilder(Config.getVerifyLoginUri())
+                .build();
+    }
+
     public static RequestSpecification postProductListSpec()
     {
         return getBaseSpecBuilder(Config.postAllProductsUri())
@@ -55,3 +65,4 @@ public class API {
 
 
 }
+
