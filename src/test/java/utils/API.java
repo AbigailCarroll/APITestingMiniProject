@@ -1,17 +1,19 @@
 package utils;
 
+import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 
 
 public class API {
-    public static final String BASE_URI = ExerciseConfig.getBaseUri();
+    public static final String BASE_URI = Config.getBaseUri();
 
     public static RequestSpecification createAccountRequestSpec() {
         return new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
-                .setBasePath(ExerciseConfig.getCreateAccountPath())
+                .setBasePath(Config.getCreateAccountPath())
                 .setContentType(ContentType.URLENC) // Set the Content-Type for the request
                 .build();
     }
@@ -34,5 +36,22 @@ public class API {
                 .setBaseUri(Config.getBaseUri())
                 .setBasePath(path);
     }
+
+    public static RequestSpecification putBrandsListSpec() {
+        return getBaseSpecBuilder(Config.getAllUri())
+                .setContentType(ContentType.JSON)
+                .setAccept(ContentType.JSON)
+                .build();
+    }
+
+
+    public static RequestSpecification verifyLoginRequestSpec() {
+        return new RequestSpecBuilder()
+                .setBaseUri(BASE_URI)
+                .setBasePath(Config.getVerifyLoginPath())
+                .setContentType(ContentType.URLENC)
+                .build();
+    }
+
 
 }
