@@ -1,38 +1,44 @@
 package restassured;
 
 import io.restassured.RestAssured;
+import io.restassured.parsing.Parser;
 import io.restassured.response.Response;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import utils.API;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static utils.APIUtils.sendPutRequestToBrandsList;
 
 public class BrandsListPutTest {
+    private static Response response;
+
+    @BeforeAll
+    static void beforeAll(){
+        //Treat "text/html" as JSON
+        RestAssured.registerParser("text/html", Parser.JSON);
+
+        response = RestAssured
+                .given()
+                .spec(API.putBrandsListSpec())
+                .body("{ \"dummy\": \"data\" }")
+                .when()
+                .put()
+                .then()
+                .log().all()
+                .extract().response();
+    }
 
     @Test
-    public void testPutMethodOnBrandsList_ShouldReturn405InBody() throws Exception {
-        Response response = sendPutRequestToBrandsList();
+    public void testPutMethodOnBrandsList_ShouldReturn405InBody() {
+        // Parse JSON directly
+        int responseCode = response.jsonPath().getInt("responseCode");
+        String message = response.jsonPath().getString("message");
 
-        // Log everything
-        System.out.println("Status Code: " + response.getStatusCode());
-        System.out.println("Raw Response: " + response.getBody().asString());
+        MatcherAssert.assertThat(responseCode, Matchers.is(405));
+        MatcherAssert.assertThat(message, Matchers.is("This request method is not supported."));
 
-        // Extract the JSON string from HTML
-        String htmlBody = response.getBody().asString();
-        int start = htmlBody.indexOf('{');
-        int end = htmlBody.lastIndexOf('}') + 1;
-        String jsonString = htmlBody.substring(start, end);
 
-        // Parse the JSON string manually
-        JSONParser parser = new JSONParser();
-        JSONObject jsonObject = (JSONObject) parser.parse(jsonString);
-
-        long responseCode = (long) jsonObject.get("responseCode");
-        String message = (String) jsonObject.get("message");
-
-        // Assertions
-        assertEquals(405, responseCode);
-        assertEquals("This request method is not supported.", message);
     }
 }

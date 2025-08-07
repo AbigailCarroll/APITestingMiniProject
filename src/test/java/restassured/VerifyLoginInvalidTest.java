@@ -11,6 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pojos.UserManagement.UserLoginResponse;
 import utils.API;
+
 import utils.ExerciseConfig;
 
 public class VerifyLoginInvalidTest {
@@ -23,6 +24,7 @@ public class VerifyLoginInvalidTest {
         String invalidPassword = ExerciseConfig.getProperty("automationexercise.invalid_password");
         response = RestAssured
                 .given()
+
                 .spec(API.verifyLoginRequestSpec())
                 .formParam("email", invalidEmail)
                 .formParam("password", invalidPassword)
