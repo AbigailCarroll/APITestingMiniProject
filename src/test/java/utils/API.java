@@ -37,6 +37,14 @@ public class API {
                 .setBasePath(path);
     }
 
+    public static RequestSpecification putBrandsListSpec() {
+        return getBaseSpecBuilder(Config.getAllUri())
+                .setContentType(ContentType.JSON)
+                .setAccept(ContentType.JSON)
+                .build();
+    }
+
+
     public static RequestSpecification verifyLoginRequestSpec() {
         return new RequestSpecBuilder()
                 .setBaseUri(BASE_URI)
@@ -45,21 +53,5 @@ public class API {
                 .build();
     }
 
-    public static Response sendPutRequestToBrandsList() {
-        String baseUri = Config.getBaseUri();
-        String apiPath = Config.getAllUri();
-
-        return RestAssured
-                .given()
-                .baseUri(baseUri)
-                .header("Content-Type", "application/json")
-                .header("Accept", "application/json")
-                .body("{ \"dummy\": \"data\" }") // Add body to trigger error on PUT
-                .when()
-                .put(apiPath)
-                .then()
-                .log().all()
-                .extract().response();
-    }
 
 }
