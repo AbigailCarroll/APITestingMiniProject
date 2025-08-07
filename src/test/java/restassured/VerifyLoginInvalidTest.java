@@ -12,7 +12,8 @@ import org.junit.jupiter.api.Test;
 import pojos.UserManagement.UserLoginResponse;
 import utils.API;
 
-import utils.ExerciseConfig;
+import utils.Config;
+import utils.Config;
 
 public class VerifyLoginInvalidTest {
     private static Response response;
@@ -20,8 +21,8 @@ public class VerifyLoginInvalidTest {
 
     @BeforeAll
     public static void setup() throws JsonProcessingException {
-        String invalidEmail = ExerciseConfig.getProperty("automationexercise.invalid_email");
-        String invalidPassword = ExerciseConfig.getProperty("automationexercise.invalid_password");
+        String invalidEmail = Config.getProperty("automationexercise.invalid_email");
+        String invalidPassword = Config.getProperty("automationexercise.invalid_password");
         response = RestAssured
                 .given()
 
