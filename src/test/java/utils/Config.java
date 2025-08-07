@@ -21,21 +21,44 @@ import java.util.Properties;
             }
         }
 
-        public static String getBaseUri() {
-            return properties.getProperty("automationexcercise.base_uri");
+        public static String getBaseUri()
+        {
+            return properties.getProperty("automationexercise.base_uri");
         }
 
         public static String getBrandsListUri() {
-            return properties.getProperty("automationexcercise.api_path.get_all_brands");
+            return properties.getProperty("automationexercise.api_path.get_all_brands");
         }
 
         public static String getVerifyLoginUri() {
-            return properties.getProperty("automationexcercise.api_path.verify_login");
+            return properties.getProperty("automationexcercise.api_path.verify_login2");
         }
 
         public static String getAllProductsUri()
         {
-            return properties.getProperty("automationexcercise.api_path.get_all_products");
+            return properties.getProperty("automationexercise.api_path.get_all_products");
+        }
+
+        public static String getAllUri()
+        {
+            return properties.getProperty("automationexercise.api_path.get_all");
+        }
+
+        public static String postAllProductsUri()
+        {
+            return properties.getProperty("automationexercise.api_path.post_all_products");
+        }
+
+        public static String getCreateAccountPath() {
+            return properties.getProperty("automationexercise.api_path.create_account");
+        }
+
+        public static String getVerifyLoginPath() {
+            return properties.getProperty("automationexercise.api_path.verify_login");
+        }
+
+        public static String getProperty(String key) {
+            return properties.getProperty(key);
         }
     }
 
